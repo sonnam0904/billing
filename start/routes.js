@@ -12,11 +12,30 @@
 | http://adonisjs.com/docs/4.1/routing
 |
 */
-
+/*************************************************** web route *******************************************************/
 const Route = use('Route')
 
-// Route.on('/').render('welcome')
+Route.get('/', 'HomeController.index')
 
 Route.group(() => {
-    Route.get('/', 'HomeController.index')
-}).prefix('test')
+        Route.get('/', 'UserController.index').as('user.user.index')
+        Route.get('login', 'UserController.login').as('user.user.login')
+        Route.get('/:id', 'UserController.detail').as('user.user.detail')
+    })
+    .prefix('user')
+    // .middleware(['auth'])
+    // .domain('muare.vn') // only apply for this domain
+
+
+
+/*************************************************** api route *******************************************************/
+
+/**
+ * @see Api/v1/UserController
+ */
+Route.group(() => {
+        Route.any('/user', 'UserController.index').as('api.v1.user.index')
+    })
+    .prefix('api/v1')
+    .namespace('Api/v1')
+    .formats(['json'])

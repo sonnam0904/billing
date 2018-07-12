@@ -1,8 +1,9 @@
 'use strict'
+const View = use('View')
 
 class HomeController {
     index () {
-        return 'home'
+        return View.render('global.layout', {my_name: 'sonnn'})
     }
 }
 
