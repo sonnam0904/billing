@@ -1,4 +1,6 @@
 'use strict'
+const View = use('View')
+const Logger = use('Logger')
 
 class UserController {
 
@@ -10,10 +12,23 @@ class UserController {
     }
 
     /**
-     * login action
+     * show form login action
      */
     login () {
-        return 'login'
+        
+        return View.render('auth.login',{});
+    }
+    
+    
+    /**
+     * sign action
+     */
+    sign () {
+        return 'sign'
+    }
+    
+    register(request){
+        return request.all();
     }
 
     /**

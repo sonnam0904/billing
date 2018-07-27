@@ -20,6 +20,8 @@ Route.get('/', 'HomeController.index')
 Route.group(() => {
         Route.get('/', 'UserController.index').as('user.user.index')
         Route.get('login', 'UserController.login').as('user.user.login')
+        Route.post('sign', 'UserController.sign').as('user.user.sign');
+        Route.post('register', 'UserController.register').as('user.user.register');
         Route.get('/:id', 'UserController.detail').as('user.user.detail')
     })
     .prefix('user')
