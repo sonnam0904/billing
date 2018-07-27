@@ -1,9 +1,15 @@
 'use strict'
 const View = use('View')
+const Logger = use('Logger')
 
 class HomeController {
     index () {
-        return View.render('global.layout', {my_name: 'sonnn'})
+		var name = 'tester'
+		Logger.info('request details %j', {
+		  url: name,
+		  user: name
+		})
+        return View.render('global.layout', {my_name: name})
     }
 }
 
