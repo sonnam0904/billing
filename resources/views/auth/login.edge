@@ -25,13 +25,14 @@
                     <div id="wrapper">
                         <div id="login" class="animate form">
                             <form action="{{route('user.user.sign')}}" id="authentication" autocomplete="on" method="post">
+                                {{ csrfField() }}
                                 <h3 class="black_bg">
                                     <img src="{{assetsUrl('img/logo.png')}}" alt="josh logo">
                                     <br>Log In</h3>
                                 <div class="form-group ">
-                                    <label style="margin-bottom:0;" for="email1" class="uname control-label"> <i class="livicon" data-name="mail" data-size="16" data-loop="true" data-c="#3c8dbc" data-hc="#3c8dbc"></i> E-mail
+                                    <label style="margin-bottom:0;" for="email" class="uname control-label"> <i class="livicon" data-name="mail" data-size="16" data-loop="true" data-c="#3c8dbc" data-hc="#3c8dbc"></i> E-mail
                                     </label>
-                                    <input id="email1" name="email1" placeholder="E-mail" value="" />
+                                    <input id="email" name="email" placeholder="E-mail" value="" />
                                     <div class="col-sm-12">
                                     </div>
                                 </div>
@@ -65,16 +66,16 @@
                                     <img src="{{assetsUrl('img/logo.png')}}" alt="josh logo">
                                     <br>Sign Up</h3>
                                 <div class="form-group">
-                                    <label style="margin-bottom:0;" for="first_name" class="youmail">
-                                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#3c8dbc" data-hc="#3c8dbc"></i> First Name
+                                    <label style="margin-bottom:0;" for="name" class="youmail">
+                                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#3c8dbc" data-hc="#3c8dbc"></i> Display Name
                                     </label>
-                                    <input id="first_name" name="first_name" required type="text" placeholder="John" />
+                                    <input id="name" name="name" required type="text" placeholder="Đào Chiến" />                                    
                                 </div>
                                 <div class="form-group">
-                                    <label style="margin-bottom:0;" for="last_name" class="youmail">
-                                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#3c8dbc" data-hc="#3c8dbc"></i> Last Name
+                                    <label style="margin-bottom:0;" for="username" class="youmail">
+                                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#3c8dbc" data-hc="#3c8dbc"></i> User Name
                                     </label>
-                                    <input id="last_name" name="last_name" required type="text" placeholder="Doe" />
+                                    <input id="username" name="username"  type="text" placeholder="daochien" />
                                 </div>
                                 <div class="form-group">
                                     <label style="margin-bottom:0;" for="email" class="youmail">
