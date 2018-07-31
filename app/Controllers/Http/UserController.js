@@ -1,5 +1,4 @@
 'use strict'
-const View = use('View')
 const Logger = use('Logger')
 
 class UserController {
@@ -14,9 +13,9 @@ class UserController {
     /**
      * show form login action
      */
-    login () {
-        
-        return View.render('auth.login',{});
+    login ({view}) {
+
+        return view.render('auth.login');
     }
     
     

@@ -5,7 +5,7 @@ const Logger = use('Logger')
 class HomeController {
     index () {
 		var name = 'tester'
-		Logger.info('request details %j', {
+		Logger.debug('request details %j', {
 		  url: name,
 		  user: name
 		})
