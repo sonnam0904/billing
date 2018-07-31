@@ -15,14 +15,17 @@
 /*************************************************** web route *******************************************************/
 const Route = use('Route')
 
-Route.get('/', 'HomeController.index')
+Route.get('/', 'HomeController.index');
+Route.get('/loginVietId', 'HomeController.loginVietId');
+Route.get('/callback', 'HomeController.callback');
+Route.get('/admin', 'HomeController.admin').middleware('quest');
 
 Route.group(() => {
-        Route.get('/', 'UserController.index').as('user.user.index')
-        Route.get('login', 'UserController.login').as('user.user.login')
+        //Route.get('/', 'UserController.index').as('user.user.index')
+        Route.get('login', 'UserController.login').as('user.user.login');
         Route.post('sign', 'UserController.sign').as('user.user.sign');
         Route.post('register', 'UserController.register').as('user.user.register');
-        Route.get('logout', 'UserController.logout').as('user.user.logout')
+        Route.get('logout', 'UserController.logout').as('user.user.logout');
         //Route.get('/:id', 'UserController.detail').as('user.user.detail').middleware('auth');
         
     })

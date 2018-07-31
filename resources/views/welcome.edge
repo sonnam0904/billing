@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Hello Adonis</title>
-  {{ style('style') }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bizfly</title>
+    {{style('css/bootstrap.min.css')}}
+    {{style('vendors/iCheck/css/square/blue.css')}}
 </head>
 <body>
-  <section>
-    <div class="logo"></div>
-    <div class="title"></div>
-    <div class="subtitle"><p>AdonisJs simplicity will make you feel confident about your code</p></div>
-    <div class="subtitle"><p>sonnn has been tested!!!!</p></div>
-  </section>
+      <div class="text-center">
+        <!-- Button HTML (to Trigger Modal) -->
+        <a href="/loginVietId" class="trigger-btn" >Log in with VietID</a>
+      </div>
+    {{ script('js/app.js') }}
+    {{ script('vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}
+    {{ script('vendors/iCheck/js/icheck.js') }}    
 </body>
 </html>

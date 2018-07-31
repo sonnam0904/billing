@@ -8,27 +8,26 @@ class UserController {
     /**
      * index action user controller
      */
-    index () {
+    index ({view, session}) {
         return 'user'
     }
 
     /**
      * show form login action
      */
-    async login ({view, auth, response}) {        
-        if(await auth.check()){
-            //return auth.user;
-            //response.send("you are logined!");           
-            return 123;
-        }      
-        return view.render('auth.login');                
+    async login ({view, auth, response}) { 
+
+        if(auth.user){                        
+            response.redirect('/admin')
+        }                
+        return view.render('auth.login')
     }
     
     
     /**
      * sign action
      */
-    async sign ({request, auth, session}) {
+    async sign ({request, auth, response, session}) {
         const rules = {
             email : 'required',
             password: 'required',                    
@@ -39,13 +38,17 @@ class UserController {
         }
         
         const {email, password } = request.all()        
-        await auth.attempt(email, password)        
-        return "login ok";
+        await auth.attempt(email, password)
+        session.flash({success: 'Đăng nhập thành công. Chào mừng ' + auth.user.name + ' đến với tool bizfly'})        
+        response.redirect('/admin')
     }
 
-    async logout({auth, session}){
-        await auth.logout()
-        return "Logout"
+    async logout({auth, response, session}){
+        if(auth.user){
+            await auth.logout()                        
+            response.redirect('/user/login')
+        }     
+        response.redirect('/admin')        
     }
     
     async register({auth, request, session, response}){
@@ -59,17 +62,15 @@ class UserController {
             password_confirm: 'required_if:password|same:password',           
         }
         const validation = await validate(data, rules)
-        if(validation.fails()){            
-            //session.withErrors(validation.messages()).flashExcept(['password']);
-            return validation.messages();        
-            //return 'Chưa nhập đầy đủ thông tin';
+        if(validation.fails()){                        
+            return validation.messages();                    
         }
         delete data.password_confirm
         const user = await User.create(data)
         // Authenticate the user
         await auth.login(user)
-
-        return response.redirect('/')
+        session.flash({success: 'Đăng ký thành công. Chào mừng ' + data.name + ' đến với tool bizfly'});
+        return response.redirect('/admin')
 
     }
 
