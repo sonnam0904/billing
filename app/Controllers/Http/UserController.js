@@ -1,5 +1,4 @@
 'use strict'
-const View = use('View')
 const Logger = use('Logger')
 const { validate } = use('Validator')
 const User = use('App/Models/User')
